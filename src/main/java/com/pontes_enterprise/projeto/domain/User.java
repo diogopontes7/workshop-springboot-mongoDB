@@ -1,8 +1,11 @@
 package com.pontes_enterprise.projeto.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //Para que queremos que seja trafegado em rede e que guarde em arquivo, temos de por o Serializable
@@ -15,6 +18,10 @@ public class User implements Serializable{
     private String name;
     private String email;
 
+    @DBRef(lazy = true)//Isto indica que o User só vai ter referencia dos posts, ou seja posts nao vao estar aninhados dentro do User
+    private List<Post> posts = new ArrayList<>();
+    //O lazy, indica que quando quisessemos receber p.e, 100 users, não termos necessidade de receber os posts referenetes, ja que requeria mutio trafego na rede
+    //Os posts so sao carregados se forem pedidos
     public User(){}
 
     public User(String id, String name, String email) {
@@ -45,6 +52,14 @@ public class User implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
