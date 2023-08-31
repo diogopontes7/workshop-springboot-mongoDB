@@ -16,7 +16,7 @@ import dto.UserDTO;
 public class UserService {
 
 
-    @Autowired
+    @Autowired//Autmatica inkjcao de dependencia
     private UserRepository repository;
 
     public List<User> findAll(){
