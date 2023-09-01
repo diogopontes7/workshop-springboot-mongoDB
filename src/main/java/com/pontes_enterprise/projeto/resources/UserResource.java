@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.pontes_enterprise.projeto.domain.Post;
 import com.pontes_enterprise.projeto.domain.User;
 import com.pontes_enterprise.projeto.services.UserService;
 
@@ -62,5 +63,11 @@ public class UserResource {
         user.setId(id);//O userDTO vai ser o user com o id especificado
         user = service.update(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPostByUserId(@PathVariable String id){
+        User user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());//Vai obter atraves do id a lista de posts associados a ele
     }
 }

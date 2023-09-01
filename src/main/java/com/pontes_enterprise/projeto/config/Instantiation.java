@@ -13,6 +13,7 @@ import com.pontes_enterprise.projeto.repository.PostRepository;
 import com.pontes_enterprise.projeto.repository.UserRepository;
 
 import dto.AuthorDTO;
+import dto.CommentDTO;
 
 @Configuration
 public class Instantiation implements CommandLineRunner{
@@ -38,8 +39,15 @@ public class Instantiation implements CommandLineRunner{
         //Vamos salvar os usuarios e dps fazemos a copia pelo AuthorDTO
         userRepository.saveAll(Arrays.asList(lm10,r9,cr7));
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "O Ronaldo é o Goat", "O gajo é o melhor marcador de todos os tempos", new AuthorDTO(lm10));
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Eu sou o goat", "Ganhei a copa", new AuthorDTO(lm10));
         Post post2 = new Post(null, sdf.parse("21/03/2018"), "Eu sou o goat", "Eu sou o melhor marcador de todos os tempos", new AuthorDTO(cr7));
+
+        CommentDTO c1 = new CommentDTO("Mas tu não tens copa Crisitiano", sdf.parse("27/02/2023"), new AuthorDTO(lm10));
+        CommentDTO c2 = new CommentDTO("Não tenho pq a minha seleçao joga mal", sdf.parse("27/02/2023"), new AuthorDTO(cr7));
+        CommentDTO c3 = new CommentDTO("Oh Messi a tua copa tmb foi só com penaltis, eu joguei muito na minha copa", sdf.parse("27/02/2023"), new AuthorDTO(r9));
+
+        post1.getComments().addAll(Arrays.asList(c3));
+        post2.getComments().addAll(Arrays.asList(c1,c2));
 
         //Guarda todos outra vez
         postRepository.saveAll(Arrays.asList(post1,post2));
