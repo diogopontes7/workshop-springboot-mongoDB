@@ -45,4 +45,5 @@ Este projeto implementa um sistema utilizando o Spring Boot e o MongoDB, explora
 ## Contribuição
 Contribuições são bem-vindas! Se você identificar bugs, problemas de desempenho ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
-
+##Desenvolvedores
+Este projeto foi desenvolvido pelo [Diogo Pontes](https://github.com/diogopontes7) com a ajuda do Prof. Nélio ALves no curso [Java COMPLETO Programação Orientada a Objetos + Projetos](https://www.udemy.com/course/java-curso-completo/?couponCode=GENAISALE24). Queria agradecer ao Prof Nélio Alves pelos os ensinamentos e pela a ajuda na realização deste projeto.
